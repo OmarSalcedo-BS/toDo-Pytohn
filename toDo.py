@@ -1,6 +1,31 @@
+import json
+import os
+
+TODO_FILE = "tareas.json"
+
 tareas = []
 
+
+def cargar_tareas():
+    if not os.path.exists(TODO_FILE) or os.path.getsize(TODO_FILE) == 0:
+        return []
+    try:
+        with open(TODO_FILE, 'r', encoding='utf-8') as archivo:
+            return json.load(archivo)
+    except json.JSONDecodeError:
+        print("Error: El archivo de tareas está corrupto. Se iniciará una lista vacía.")
+        return []
+
+
+
+def guardar_tareas():
+    with open(TODO_FILE, 'w', encoding='utf-8') as archivo:
+        json.dump(tareas, archivo, ensure_ascii=False, indent=4)
+        print(f" Tareas guardadas correctamente. en {TODO_FILE}")
+        
+
 def mostrar_menu():
+  
     print("\n--- Bienvenido al To-Do ---")
     print("1. Añadir tarea")
     print("2. Ver tareas")
@@ -12,6 +37,7 @@ def mostrar_menu():
 def anadir_tarea(tarea):
     tareas.append((tarea, False))
     print(f" Tarea '{tarea}' añadida.")
+    guardar_tareas()
 
 def ver_tareas():
     if not tareas:
@@ -19,6 +45,7 @@ def ver_tareas():
         return
 
     print("\n--- Lista de Tareas ---")
+    cargar_tareas()
     for i, (tarea, completada) in enumerate(tareas):
         estado = "[X] Completada" if completada else "[ ] Pendiente"
         print(f"{i + 1}. {estado} - {tarea}")
@@ -56,6 +83,8 @@ def eliminar_tarea(numero_tarea):
             
 
 def principal():
+    global tareas
+    tareas = cargar_tareas()
     while True:
         mostrar_menu()
         opcion = input("Elige una opción del 1 al 5: ")

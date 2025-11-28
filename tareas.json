@@ -1,0 +1,26 @@
+[
+    [
+        "Crear un toDo en python",
+        true
+    ],
+    [
+        "Probar el toDo",
+        true
+    ],
+    [
+        "Crear repositorio de gitHub para manejo de versiones",
+        true
+    ],
+    [
+        "Mejorar el toDo con persistencia de datos",
+        true
+    ],
+    [
+        "Hacer mas pruebas",
+        false
+    ],
+    [
+        "Agregar nuevas funciones",
+        false
+    ]
+]
