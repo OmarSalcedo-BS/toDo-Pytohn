@@ -1,8 +1,6 @@
 
 tareas = []
 
-
-
 def mostrar_menu():
 
     print("\n--- Bienvenido al To-Do ---")
@@ -52,7 +50,7 @@ def principal():
 
     while True:
         mostrar_menu()
-        opcion = input("Elige una opción (1-4): ")
+        opcion = input("Elige una opción del 1 al 4: ")
 
         if opcion == '1':
             descripcion = input("Introduce la nueva tarea: ")
