@@ -89,5 +89,4 @@ def principal():
             print(" Opción no válida. Por favor, elige un número del 1 al 5.")
 
 
-if __name__ == "__main__":
-    principal()
+principal()
